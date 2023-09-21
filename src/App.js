@@ -12,15 +12,31 @@ function App () {
     return storedData ? JSON.parse(storedData) : [];
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+
   const [isModalOpen, setModalOpen] = useState(false);
   const [isView, setIsView] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
+  
 
   useEffect(() => {
     // Update localStorage whenever data changes
     localStorage.setItem('data', JSON.stringify(data));
   }, [data]);
+
+  const getPaginatedData = () => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    return data.slice(startIndex, endIndex);
+  };
+
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const openModal = (isView, isEdit, currentIndex) => {
     setModalOpen(true);
@@ -72,10 +88,6 @@ function App () {
     localStorage.setItem('data', JSON.stringify(updatedData));
   };
 
-  // console.log("isView", isView)
-  // console.log("isEdit", isEdit)
-  // console.log("currentIndex", currentIndex)
-
   let styles = {
     justifyContent: data.length > 2 ? 'space-between' : ''
   }
@@ -93,11 +105,26 @@ function App () {
           <button onClick={() => openModal(false, false)}>add users</button>
         </div>
         <div className="body" style={styles}>
-          {data &&
-            data.map((object, index) => {
+          {
+            getPaginatedData().map((object, index) => {
               return <Card data={object} key={index} currentIndex={index} openModal={openModal} handleDelete={handleDelete}/>;
             })}
         </div>
+        {data.length > 6 && <div className="pagination-container">
+          <button disabled={currentPage === 1} className="left">
+            <img src="/images/ic_left.svg" alt="left" onClick={() => handlePageChange(currentPage - 1)} />
+          </button>
+          <div className="number-wrapper">
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button key={index} onClick={() => handlePageChange(index + 1)} disabled={currentPage === index + 1} className={`number ${currentPage === index + 1 ? 'active' : 'inactive'}`}>
+                {index + 1}
+              </button>
+            ))}
+          </div>
+          <button disabled={currentPage === totalPages} className="right">
+            <img src="/images/ic_right.svg" alt="right" onClick={() => handlePageChange(currentPage + 1)} />
+          </button>
+        </div>}
       </div>
     </div>
   );
