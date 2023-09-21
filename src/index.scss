@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import './sass/header.scss';
+@import './sass/variables.scss';
+@import './sass/card.scss';
+@import './sass/modal.scss';
+@import './sass/form.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+
+.container {
+  padding: 3rem 5.625rem;
+  width:100%;
+  
+  .head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    
+    span {
+      color: #000;
+      font-size: 28px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+    }
+
+    button {
+      border-radius: 10px;
+      background: $blueColor;
+      color: #FFF;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      text-transform: uppercase;
+      border: none;
+      width: 180px;
+      height: 56px;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+  }
+
+  .body{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 767px){
+    .head {
+      flex-direction: column !important;
+      row-gap: 2rem;
+    }
+    
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 3rem 2.625rem;
+  }
+
+  .body {
+    justify-content: center !important;
+  }
+}

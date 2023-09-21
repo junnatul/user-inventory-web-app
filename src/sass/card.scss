@@ -1,0 +1,107 @@
+.card-wrapper {
+    width: 460px;
+    height: 339px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #000;
+    background: #FCFCFC;
+    box-shadow: 2px 6px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.3rem 1.5rem;
+
+    span {
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.green {
+    background: $greenColor;
+}
+
+.purple {
+    background: $purpleColor;
+}
+
+.orange {
+    background: $orangeColor;
+}
+
+.card-body {
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+.card-data {
+    display: flex;
+    column-gap: 1rem;
+
+    span:first-child {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+    }
+
+    span:nth-child(2) {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .uppercase {
+        text-transform: uppercase;
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 1rem 0 1rem;
+
+    button {
+        width: 97px;
+        height: 30px;
+        flex-shrink: 0;
+        border-radius: 5px;
+        border: none;
+        color: #FFF;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 17px;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    button:first-child {
+        background: $redColor;
+    }
+
+    button:nth-child(2) {
+        background: $blueColor;
+    }
+
+    button:nth-child(3) {
+        background: $blueColor;
+    }
+}
